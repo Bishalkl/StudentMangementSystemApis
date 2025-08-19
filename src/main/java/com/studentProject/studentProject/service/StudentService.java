@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
-
-import com.studentProject.studentProject.dto.StudentRequest;
 import com.studentProject.studentProject.model.Student;
 import com.studentProject.studentProject.repository.StudentRepository;
 

@@ -15,14 +15,17 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @NotBlank
     private String name;
 
     @Email
+    @NotBlank
     private String email;
 
     @Min(18)
     private int age;
+
 
     // constructor
     public Student() {}
@@ -32,6 +35,8 @@ public class Student {
         this.email = email;
         this.age = age;
     }
+
+    
 
     // getter 
     public Long getId() {return id; }
