@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
 import com.studentProject.studentProject.dto.ErrorResponseDto;
 
 @ControllerAdvice
@@ -27,12 +26,12 @@ public class GlobalHandlerException {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ErrorResponseDto handleValidationException(MethodArgumentNotValidException ex) {
-        // Get first field error message
         String message = ex.getBindingResult().getFieldError() != null
                 ? ex.getBindingResult().getFieldError().getDefaultMessage()
                 : "Validation failed";
         return new ErrorResponseDto(LocalDateTime.now(), message, "No additional details");
     }
+
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

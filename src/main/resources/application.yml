@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: studentProject
+  profiles:
+    active: dev   # default profile
+
+app:
+  name: Student Management System
