@@ -4,10 +4,15 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: bishal
     password: bishal1212
+
   jpa:
     hibernate:
-      ddl-auto: validate
-    show-sql: false
+      ddl-auto: update  #Automatically creates/upate tables
+    show-sql: true     #Show sql statement in log
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true  #Formal SQL for readability
 
 server:
   port: 8080
@@ -32,3 +37,8 @@ info:
     name: Student Management API
     version: 1.0.0
     description: API for managing student records
+
+app:
+  name: Student Management System
+  version: 1.0.0
+  enableFeatureX: false

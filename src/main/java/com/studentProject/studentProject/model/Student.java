@@ -1,15 +1,21 @@
 package com.studentProject.studentProject.model;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 
 @Entity
+@Table(name="students")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +27,7 @@ public class Student {
 
     @Email
     @NotBlank
+    @Column(unique = true)
     private String email;
 
     @Min(18)

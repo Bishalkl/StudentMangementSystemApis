@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.studentProject.studentProject.config.AppProperties;
 import com.studentProject.studentProject.dto.StudentRequest;
 import com.studentProject.studentProject.dto.StudentResponse;
 import com.studentProject.studentProject.model.Student;
+import com.studentProject.studentProject.service.AppInfoService;
 import com.studentProject.studentProject.service.StudentService;
 
 import jakarta.validation.Valid;
@@ -27,9 +29,11 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/students")
 public class StudentController {
     private final StudentService studentService;
+    private final AppProperties appProperties;
 
-    public StudentController(StudentService studentService) {
+    public StudentController(StudentService studentService, AppProperties appProperties) {
         this.studentService = studentService;
+        this.appProperties = appProperties;
     }
 
     // createStudent
@@ -43,6 +47,19 @@ public class StudentController {
         return StudentResponse.fromEntity(studentService.createStudent(student));
         
     }
+
+    // testMapping
+    @GetMapping("/check-profile")
+    @ResponseStatus(HttpStatus.OK)
+    public String testFeatureX() {
+        if(appProperties.isEnableFeatureX()) {
+            return "Yes it is  dev";
+        } else {
+            return "Yes it is prod";
+         }
+    }
+
+    
 
     // get all student
     @GetMapping
